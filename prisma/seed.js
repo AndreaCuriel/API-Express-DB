@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 (async function main() {
   try {
-    const woopa = await prisma.explorer.upsert({
+    /* const woopa = await prisma.explorer.upsert({
       where: { name: "Woopa" },
       update: {},
       create: {
@@ -43,7 +43,18 @@ const prisma = new PrismaClient();
       },
     });
 
-    console.log("Create 3 explorers");
+    console.log("Create 3 explorers"); */
+
+    const woopa = await prisma.explorer_mission.upsert({
+      where: { name: "Woopa" },
+      update: {},
+      create: {
+        name: "Woopa",
+        lang: "Node",
+        missionCommander: "Carlo",
+        enrollments: 2,
+      },
+    });
   } catch (e) {
     console.error(e);
     process.exit(1);
