@@ -93,6 +93,12 @@ app.put("/explorersMission/:id", async (req, res) => {
     },
   });
 
+  app.delete("/explorersMission/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    await prisma.explorer_mission.delete({ where: { id: id } });
+    return res.json({ message: "Eliminado correctamente" });
+  });
+
   return res.json({ message: "Actualizado correctamente" });
 });
 
