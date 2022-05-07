@@ -77,6 +77,36 @@ const prisma = new PrismaClient();
         enrollments: 2,
       },
     });
+
+    const missionCommander = await prisma.missionCommander.upsert({
+      where: { name: "Carlo" },
+      update: {},
+      create: {
+        name: "Carlo",
+        username: "MCCarlo",
+        mainStack: "Node",
+      },
+    });
+
+    const missionCommander1 = await prisma.missionCommander.upsert({
+      where: { name: "Fernanda" },
+      update: {},
+      create: {
+        name: "Fernanda",
+        username: "MCFernanda",
+        mainStack: "Java",
+      },
+    });
+
+    const missionCommander2 = await prisma.missionCommander.upsert({
+      where: { name: "Rodrigo" },
+      update: {},
+      create: {
+        name: "Rodrigo",
+        username: "MCRodrigo",
+        mainStack: "Vue",
+      },
+    });
   } catch (e) {
     console.error(e);
     process.exit(1);
