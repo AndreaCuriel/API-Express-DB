@@ -134,6 +134,21 @@ app.post("/missionCommanders", async (req, res) => {
   return res.json({ message });
 });
 
+app.put("/missionCommanders/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+
+  await prisma.missionCommander.update({
+    where: {
+      id: id,
+    },
+    data: {
+      mainStack: req.body.mainStack,
+    },
+  });
+
+  return res.json({ message: "Actualizado correctamente" });
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
