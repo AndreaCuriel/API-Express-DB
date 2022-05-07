@@ -110,6 +110,11 @@ app.put("/explorersMission/:id", async (req, res) => {
   return res.json({ message: "Actualizado correctamente" });
 });
 
+app.get("/missionCommanders", async (req, res) => {
+  const allMissionCommanders = await prisma.missionCommander.findMany({});
+  res.json(allMissionCommanders);
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
